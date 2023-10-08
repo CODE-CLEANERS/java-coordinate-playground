@@ -3,9 +3,10 @@ package calculator;
 public class Line {
     private final Dot firstDot;
     private final Dot secondDot;
+    private static final String SPLIT_EXPRESSION = "-";
     public Line(String input) {
         validateInput(input);
-        String[] split = input.split("-");
+        String[] split = input.split(SPLIT_EXPRESSION);
         try{
             this.firstDot = new Dot(split[0]);
             this.secondDot = new Dot(split[1]);
@@ -15,7 +16,7 @@ public class Line {
     }
 
     private void validateInput(String input) {
-        if (!input.contains("-")){
+        if (!input.contains(SPLIT_EXPRESSION)){
             throw new IllegalArgumentException();
         }
     }
