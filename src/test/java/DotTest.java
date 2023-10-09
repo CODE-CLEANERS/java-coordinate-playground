@@ -42,4 +42,18 @@ class DotTest {
         Dot secondDot = new Dot(14,15);
         assertThat(dot.getDistanceBetween(secondDot)).isEqualTo(6.4, offset(0.1));
     }
+
+    @Test
+    void is_x_parallel() {
+        Dot dot = new Dot(10, 10);
+        Dot dot2 = new Dot(15, 10);
+        assertThat(dot.isXParallel(dot2)).isTrue();
+    }
+
+    @Test
+    void is_y_parallel() {
+        Dot dot = new Dot(10, 10);
+        Dot dot2 = new Dot(10, 15);
+        assertThat(dot.isYParallel(dot2)).isTrue();
+    }
 }

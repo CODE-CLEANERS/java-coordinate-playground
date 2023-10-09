@@ -1,4 +1,5 @@
 import calculator.Dot;
+import calculator.Dots;
 import calculator.Line;
 import org.junit.jupiter.api.Test;
 
@@ -12,29 +13,27 @@ class LineTest {
     //- 정상적인 좌표값을 입력한 경우, 해당 좌표에 특수문자를 표시한다.
     //- 좌표값을 두 개 입력한 경우, 두 점을 있는 직선으로 가정한다. 좌표값과 좌표값 사이는 '-' 문자로 구분한다.
     //- 직선인 경우는 두 점 사이 거리를 계산해서 출력한다.
-    @Test
-    void lineInput_test() {
-        String input = "(1,1)-(5,5)";
-        Line line = new Line(input);
 
-        assertThat(line.getFirstDot()).isEqualTo(new Dot(1, 1));
-        assertThat(line.getSecondDot()).isEqualTo(new Dot(5, 5));
-    }
-
-    @Test
-    void invalid_lineInput_test() {
-        String input = "(1,1)1(5,5)";
-        String input2 = "(1,1)";
-        String input3 = "(25,25)-(25,25)";
-        assertThatThrownBy(() -> new Line(input)).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Line(input2)).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Line(input3)).isInstanceOf(IllegalArgumentException.class);
-    }
+    // getter 매소드를 두는 것이 좋지 않다고 판단됨. lineGetFirstDot() 과 같은 형태는 쓰지 않기로 -
 
     @Test
     void lineDistance_test() {
         String input = "(1,1)-(5,5)";
-        Line line = new Line(input);
+        Line line = new Line(new Dots(input));
         assertThat(line.getDotsDistance()).isEqualTo(5.65, offset(0.01));
+    }
+
+    @Test
+    void is_line_x_parallel() {
+        String input = "(1,1)-(5,1)"; // y 값이 같다.
+        Line line = new Line(new Dots(input));
+        assertThat(line.isXParallel()).isTrue();
+    }
+
+    @Test
+    void is_line_y_parallel() {
+        String input = "(1,1)-(1,5)"; // x 값이 같다.
+        Line line = new Line(new Dots(input));
+        assertThat(line.isYParallel()).isTrue();
     }
 }
