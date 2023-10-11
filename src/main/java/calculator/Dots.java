@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +18,17 @@ public class Dots {
     public Dots(String input) {
         validateInput(input);
         this.dots = Arrays.stream(input.split("-")).map(Dot::new).collect(Collectors.toList());
+    }
+
+    private Dots(Dot first, Dot second){
+//        this.dots = List.of(first, second);
+        this.dots = new ArrayList<>();
+        dots.add(first);
+        dots.add(second);
+    }
+
+    public static Dots asLine(Dot first, Dot second){
+        return new Dots(first, second);
     }
 
     /**
@@ -89,5 +101,41 @@ public class Dots {
 
         if (collect.size() == 1) return (int) Math.pow(collect.get(0), 2);
         return (int) (collect.get(0)  * collect.get(1));
+    }
+
+    /**
+     * triangle
+     */
+    public boolean isTriangle() {
+        return this.dots.size() == 3;
+    }
+
+    public double getLinesLength(){
+        double lineLength = 0;
+        for (int i = 0; i < this.dots.size(); i++) {
+            Dot first = dots.get(i);
+            Dot second = dots.get((i + 1) % dots.size());
+            Line line = new Line(first, second);
+            lineLength += line.getDotsDistance();
+        }
+        return lineLength;
+    }
+
+    //헤론의 공식
+    //s = (a + b + c) / 2
+    //Area = √(s * (s - a) * (s - b) * (s - c))
+    public double getTriangleArea(){
+        List<Double> lineLengths = new ArrayList<>();
+        for (int i = 0; i < this.dots.size(); i++) {
+            Dot first = dots.get(i);
+            Dot second = dots.get((i + 1) % dots.size());
+            Line line = new Line(first, second);
+            lineLengths.add(line.getDotsDistance());
+        }
+        double area = getLinesLength() / 2;
+        for (Double lineLength : lineLengths) {
+            area *= (getLinesLength() / 2) - lineLength;
+        }
+        return Math.sqrt(area);
     }
 }

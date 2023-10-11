@@ -7,6 +7,10 @@ public class Line {
         this.dots = dots;
     }
 
+    public Line(Dot first, Dot second){
+        this.dots = Dots.asLine(first, second);
+    }
+
     public double getDotsDistance(){
         return this.dots.getDistanceBetween();
     }

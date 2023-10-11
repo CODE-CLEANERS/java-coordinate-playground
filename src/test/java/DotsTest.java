@@ -43,4 +43,25 @@ class DotsTest {
         Dots dots = new Dots(input);
         assertThat(dots.isSquare()).isFalse();
     }
+
+    @Test
+    void is_triangle() {
+        String input = "(10,11)-(22,10)-(22,18)";
+        Dots dots = new Dots(input);
+        assertThat(dots.isTriangle()).isTrue();
+    }
+
+    @Test
+    void is_not_triangle() {
+        String input = "(10,11)-(22,10)";
+        Dots dots = new Dots(input);
+        assertThat(dots.isTriangle()).isFalse();
+    }
+
+    @Test
+    void triangle_area() {
+        String input = "(10,11)-(22,10)-(22,18)";
+        Dots dots = new Dots(input);
+
+    }
 }
