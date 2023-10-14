@@ -3,7 +3,7 @@ package Figure;
 import domain.Point;
 import domain.Points;
 
-public class Line {
+public class Line implements Calculator {
 
     Points points;
 
@@ -11,7 +11,8 @@ public class Line {
         this.points = points;
     }
 
-    public double getLength() {
+    @Override
+    public double calculate() {
 
         Point point1 = points.getPoint(0);
         Point point2 = points.getPoint(1);

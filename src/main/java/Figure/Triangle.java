@@ -3,7 +3,7 @@ package Figure;
 import domain.Point;
 import domain.Points;
 
-public class Triangle {
+public class Triangle implements Calculator {
 
     Points points;
 
@@ -11,7 +11,8 @@ public class Triangle {
         this.points = points;
     }
 
-    public double getArea() {
+    @Override
+    public double calculate() {
 
         Point pointA = points.getPoint(0);
         Point pointB = points.getPoint(1);

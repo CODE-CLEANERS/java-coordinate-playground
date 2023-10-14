@@ -14,16 +14,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class FigureTest {
-
-    // 좌표 정보는 괄호"(", ")"로 둘러쌓여 있으며 쉼표(,)로 x값과 y값을 구분
-    @Test
-    @DisplayName("입력 좌표 포맷을 확인")
-    void 입력_좌표_포맷_Test() {
-
-
-
-    }
+public class CalculatorTest {
 
     // X, Y좌표 모두 최대 24까지만 입력
     @Test
@@ -54,8 +45,8 @@ public class FigureTest {
         points.add(Point.initPoint(10, 10));
         points.add(Point.initPoint(10, 15));
 
-        Line line = new Line(new Points(points));
-        double len = line.getLength();
+        Line line = new Line(Points.initPoints(points));
+        double len = line.calculate();
         Assertions.assertThat(5.0).isEqualTo(len);
 
     }
@@ -72,8 +63,8 @@ public class FigureTest {
         points.add(Point.initPoint(15, 15));
         points.add(Point.initPoint(15, 10));
 
-        Square square = new Square(new Points(points));
-        double area = square.getArea();
+        Square square = new Square(Points.initPoints(points));
+        double area = square.calculate();
         Assertions.assertThat(25.0).isEqualTo(area);
 
     }
@@ -89,8 +80,8 @@ public class FigureTest {
         points.add(Point.initPoint(0, 0));
         points.add(Point.initPoint(10, 0));
 
-        Triangle triangle = new Triangle(new Points(points));
-        double area = triangle.getArea();
+        Triangle triangle = new Triangle(Points.initPoints(points));
+        double area = triangle.calculate();
         Assertions.assertThat(50.0).isEqualTo(area);
 
     }

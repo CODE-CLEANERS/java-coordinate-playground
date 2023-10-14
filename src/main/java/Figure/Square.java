@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Square {
+public class Square implements Calculator {
 
     Points points;
 
@@ -15,7 +15,8 @@ public class Square {
         this.points = points;
     }
 
-    public double getArea() {
+    @Override
+    public double calculate() {
 
         Point stand = points.getPoint(0);
 

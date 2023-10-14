@@ -23,7 +23,7 @@ public class Point {
 
     public static Point inputStrSeparator(String inStr) {
 
-        String[] values = inStr.split(",");
+        String[] values = inStr.replaceAll("[()]", "").split(",");
 
         return initPoint(Integer.parseInt(values[0]), Integer.parseInt(values[1]));
 
