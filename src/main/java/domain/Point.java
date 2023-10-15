@@ -1,5 +1,7 @@
 package domain;
 
+import utils.Constants;
+
 public class Point {
 
     private int x;
@@ -15,7 +17,7 @@ public class Point {
     public static Point initPoint(int x, int y) {
 
         if (x < 0 || x > 24 || y < 0 || y > 24) {
-            throw new IllegalArgumentException("좌표는 모두 최대 24까지만 허용");
+            throw new IllegalArgumentException(Constants.INPUT_RANGE_CHECK);
         }
 
         return new Point(x, y);
