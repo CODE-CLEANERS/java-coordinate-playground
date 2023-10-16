@@ -1,4 +1,4 @@
-package calculator;
+package figure;
 
 import java.util.Objects;
 
@@ -32,6 +32,13 @@ public class Dot {
 
     public double getDistanceBetween(Dot secondDot) {
         return Math.sqrt(Math.pow((secondDot.x - this.x), 2) + Math.pow((secondDot.y - this.y), 2));
+    }
+    public boolean isXParallel(Dot dot) {
+        return this.y == dot.y;
+    }
+
+    public boolean isYParallel(Dot dot) {
+        return this.x == dot.x;
     }
 
     @Override
