@@ -1,9 +1,9 @@
 package calculator;
 
-public class Square {
+public class SquareV1 {
     private final Dots dots;
 
-    public Square(Dots dots) {
+    public SquareV1(Dots dots) {
         if (!dots.isSquare()){
             throw new IllegalArgumentException();
         }

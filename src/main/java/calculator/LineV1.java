@@ -1,13 +1,13 @@
 package calculator;
 
-public class Line {
+public class LineV1 {
     private final Dots dots;
 
-    public Line(Dots dots) {
+    public LineV1(Dots dots) {
         this.dots = dots;
     }
 
-    public Line(Dot first, Dot second){
+    public LineV1(DotV1 first, DotV1 second){
         this.dots = Dots.asLine(first, second);
     }
 

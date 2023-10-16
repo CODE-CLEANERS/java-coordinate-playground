@@ -1,11 +1,10 @@
-import calculator.Dot;
 import calculator.Dots;
-import calculator.Line;
+import calculator.LineV1;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
-class LineTest {
+class LineV1Test {
     //- 사용자가 점에 대한 좌표 정보를 입력하는 메뉴를 구성한다.
     //- 좌표 정보는 괄호"(", ")"로 둘러쌓여 있으며 쉼표(,)로 x값과 y값을 구분한다.
     //- X, Y좌표 모두 최대 24까지만 입력할 수 있다.
@@ -19,21 +18,21 @@ class LineTest {
     @Test
     void lineDistance_test() {
         String input = "(1,1)-(5,5)";
-        Line line = new Line(new Dots(input));
-        assertThat(line.getDotsDistance()).isEqualTo(5.65, offset(0.01));
+        LineV1 lineV1 = new LineV1(new Dots(input));
+        assertThat(lineV1.getDotsDistance()).isEqualTo(5.65, offset(0.01));
     }
 
     @Test
     void is_line_x_parallel() {
         String input = "(1,1)-(5,1)"; // y 값이 같다.
-        Line line = new Line(new Dots(input));
-        assertThat(line.isXParallel()).isTrue();
+        LineV1 lineV1 = new LineV1(new Dots(input));
+        assertThat(lineV1.isXParallel()).isTrue();
     }
 
     @Test
     void is_line_y_parallel() {
         String input = "(1,1)-(1,5)"; // x 값이 같다.
-        Line line = new Line(new Dots(input));
-        assertThat(line.isYParallel()).isTrue();
+        LineV1 lineV1 = new LineV1(new Dots(input));
+        assertThat(lineV1.isYParallel()).isTrue();
     }
 }

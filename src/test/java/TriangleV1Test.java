@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.offset;
 
-class TriangleTest {
+class TriangleV1Test {
     @Test
     void is_triangle() {
         String input = "(10,11)-(22,10)-(22,18)";
