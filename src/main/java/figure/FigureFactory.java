@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 public class FigureFactory {
-    private final List<Figure> figures;
+    private final List<Figure> figureList;
     private static final Map<Integer, Figure> figureMap = new HashMap<>();
 
-    public FigureFactory(List<Figure> figures) {
-        this.figures = figures;
-        for (Figure figure : figures) {
+    public FigureFactory(List<Figure> figureList) {
+        this.figureList = figureList;
+        for (Figure figure : figureList) {
             figureMap.put(figure.size(), figure);
         }
     }
