@@ -14,7 +14,7 @@ public class Point {
 
     }
 
-    public static Point initPoint(int x, int y) {
+    public static Point newInstance(int x, int y) {
 
         if (x < 0 || x > 24 || y < 0 || y > 24) {
             throw new IllegalArgumentException(Constants.INPUT_RANGE_CHECK);
@@ -27,7 +27,7 @@ public class Point {
 
         String[] values = inStr.replaceAll("[()]", "").split(",");
 
-        return initPoint(Integer.parseInt(values[0]), Integer.parseInt(values[1]));
+        return newInstance(Integer.parseInt(values[0]), Integer.parseInt(values[1]));
 
     }
 

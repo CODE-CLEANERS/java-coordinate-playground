@@ -17,7 +17,7 @@ public class Process {
 
         oView.msgInputPoints();
 
-        Points points = Points.initPoints(inputView.inputPoints());
+        Points points = Points.newInstance(inputView.inputPoints());
 
         if(points.getSize()== Type.LINE.getCount()) {
 

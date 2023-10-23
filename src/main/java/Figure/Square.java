@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Square implements Calculator {
 
-    Points points;
+    private Points points;
 
     public Square(Points points) {
         this.points = points;

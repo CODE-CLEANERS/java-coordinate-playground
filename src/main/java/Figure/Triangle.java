@@ -5,7 +5,7 @@ import domain.Points;
 
 public class Triangle implements Calculator {
 
-    Points points;
+    private Points points;
 
     public Triangle(Points points) {
         this.points = points;
@@ -19,13 +19,17 @@ public class Triangle implements Calculator {
         Point pointC = points.getPoint(2);
 
         double area = 0.5 * (
-                pointA.getX() * (pointB.getY() - pointC.getY()) +
-                        pointB.getX() * (pointC.getY() - pointA.getY()) +
-                        pointC.getX() * (pointA.getY() - pointB.getY())
+                this.getTriangleLine(pointA, pointB, pointC) +
+                this.getTriangleLine(pointB, pointC, pointA) +
+                this.getTriangleLine(pointC, pointA, pointB)
         );
 
         return Math.abs(area);
 
+    }
+
+    private int getTriangleLine(Point pointA, Point pointB, Point pointC) {
+        return pointA.getX() * (pointB.getY() - pointC.getY());
     }
 
 }

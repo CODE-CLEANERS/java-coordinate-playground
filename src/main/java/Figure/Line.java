@@ -5,7 +5,7 @@ import domain.Points;
 
 public class Line implements Calculator {
 
-    Points points;
+    private Points points;
 
     public Line(Points points) {
         this.points = points;

@@ -10,7 +10,7 @@ public class Points {
         this.points = points;
     }
 
-    public static Points initPoints(List<Point> points) {
+    public static Points newInstance(List<Point> points) {
         return new Points(points);
     }
 
