@@ -8,22 +8,22 @@ public class Dot {
     private static final String INVALID_INPUT_FORMAT = "Invalid input format";
     private static final String REGEX_FOR_STRING_INPUT = "[()]";
     private static final int MAX_LOCATION_FOR_DOT = 24;
-    public Dot(int x, int y) {
+    private Dot(int x, int y) {
         validateLocations(x, y);
         this.x = x;
         this.y = y;
     }
-
-    public Dot(String input) {
+    public static Dot ofTest(int x, int y){
+        return new Dot(x,y);
+    }
+    public static Dot of(String input){
         String[] parts = input.replaceAll(REGEX_FOR_STRING_INPUT, "").split(",");
         if (parts.length != 2) {
             throw new IllegalArgumentException(INVALID_INPUT_FORMAT);
         }
         int x = Integer.parseInt(parts[0].trim());
         int y = Integer.parseInt(parts[1].trim());
-        validateLocations(x, y);
-        this.x = x;
-        this.y = y;
+        return new Dot(x, y);
     }
 
     private void validateLocations(int x, int y) {
