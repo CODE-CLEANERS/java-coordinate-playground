@@ -50,14 +50,16 @@ public class Calculator {
             return;
         }
 
-        int x = 0;
-        int y = 0;
+        int x;
+        int y;
 
         try {
             x = Integer.parseInt(coordinate[0]);
             y = Integer.parseInt(coordinate[1]);
         } catch (NumberFormatException e) {
             System.out.println("올바른 좌표값을 입력해주세요.");
+            result.toFalse();
+            return;
         }
 
         if (x <= 0 || x > 24 || y <= 0 || y > 24) {
