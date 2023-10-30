@@ -21,10 +21,6 @@ public class InputView {
         String triangleInput = "\\(\\d+,\\d+\\)-\\(\\d+,\\d+\\)-\\(\\d+,\\d+\\)";
         String quadrangleInput = "\\(\\d+,\\d+\\)-\\(\\d+,\\d+\\)-\\(\\d+,\\d+\\)-\\(\\d+,\\d+\\)";
 
-//        String coordinateInput = "\\(\\d+,\\d+\\)-\\(\\d+,\\d+\\)";
-//        String triangleInput = "\\(\\d+,\\d+\\)-\\(\\d+,\\d+\\)-\\(\\d+,\\d+\\)";
-//        String quadrangleInput = "\\(\\d+,\\d+\\)-\\(\\d+,\\d+\\)-\\(\\d+,\\d+\\)-\\(\\d+,\\d+\\)";
-
         if(!(input.matches(coordinateInput)||input.matches(triangleInput)||input.matches(quadrangleInput))){
             throw new IOException("입력값을 형식에 맞게 입력해주세요.");
         }

@@ -5,12 +5,10 @@ import domain.Coordinate;
 import java.util.List;
 
 public class TriangleCalculator implements Calculator{
-    List<Coordinate> coordinateList;
-    double result;
+    private final List<Coordinate> coordinateList;
 
-    public TriangleCalculator(List<Coordinate> coordinateList, double result) {
+    public TriangleCalculator(List<Coordinate> coordinateList) {
         this.coordinateList = coordinateList;
-        this.result = result;
     }
 
     @Override
@@ -26,8 +24,7 @@ public class TriangleCalculator implements Calculator{
         //헤론의 법칙 :(변AB+변BC+변CA)/2 = s
         double s = (lineLengthAB + lineLengthBC + lineLengthCA)/2;
         // 루트(s*(s-AB)*(s-BC)*(s-CA))
-        result = Math.sqrt(s * (s - lineLengthAB) * (s - lineLengthBC) * (s - lineLengthCA));
-        return result;
+        return Math.sqrt(s * (s - lineLengthAB) * (s - lineLengthBC) * (s - lineLengthCA));
     }
 
     @Override
@@ -39,7 +36,6 @@ public class TriangleCalculator implements Calculator{
         int x = Math.abs(coordinateA.getX() - coordinateB.getX());
         int y = Math.abs(coordinateA.getY() - coordinateB.getY());
         double somPow = Math.pow(x, 2) + Math.pow(y, 2);
-        result = Math.sqrt(somPow);
-        return result;
+        return Math.sqrt(somPow);
     }
 }

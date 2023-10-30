@@ -6,12 +6,10 @@ import java.io.IOException;
 import java.util.List;
 
 public class SquareCalculator implements Calculator{
-    List<Coordinate> coordinateList;
-    double result;
+    private final List<Coordinate> coordinateList;
 
-    public SquareCalculator(List<Coordinate> coordinateList, double result) {
+    public SquareCalculator(List<Coordinate> coordinateList) {
         this.coordinateList = coordinateList;
-        this.result = result;
     }
 
     @Override

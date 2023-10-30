@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class CalculatorFactory {
-    List<Coordinate> coordinateList;
-    double result;
+    private List<Coordinate> coordinateList;
+    private double result;
 
 
     public CalculatorFactory(List<Coordinate> coordinateList,double result) {
@@ -19,13 +19,13 @@ public class CalculatorFactory {
         coordinateList = addCoordinate(splitInput);
 
         if(coordinateList.size() == 2){
-            return new CoordinateLengthCalculator(coordinateList,result);
+            return new CoordinateLengthCalculator(coordinateList);
         }
         if(coordinateList.size() == 3){
-            return new TriangleCalculator(coordinateList,result);
+            return new TriangleCalculator(coordinateList);
         }
         if(coordinateList.size() == 4){
-            return new SquareCalculator(coordinateList,result);
+            return new SquareCalculator(coordinateList);
         }
         return null;
     }
