@@ -5,7 +5,9 @@ import java.util.List;
 
 public class RentCompany {
 
-    List<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
+
+    private RentCompany () {}
 
     public static RentCompany create() {
         return new RentCompany();
