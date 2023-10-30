@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Line extends AbstractFigure {
 
-    protected Line(List<Dot> dotList) {
+    public Line(List<Dot> dotList) {
         super(dotList);
     }
 

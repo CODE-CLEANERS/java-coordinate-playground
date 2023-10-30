@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Triangle extends AbstractFigure{
-    protected Triangle(List<Dot> dotList) {
+    public Triangle(List<Dot> dotList) {
         super(dotList);
     }
 

@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public class Square extends AbstractFigure{
 
-    protected Square(List<Dot> dotList) {
+    public Square(List<Dot> dotList) {
         super(dotList);
     }
 

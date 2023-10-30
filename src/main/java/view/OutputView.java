@@ -2,10 +2,8 @@ package view;
 
 import figure.Dot;
 import figure.Figure;
-import figure.FigureFactoryLambda;
+import figure.FigureFactory;
 
-import java.io.BufferedWriter;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +21,7 @@ public class OutputView {
         for (String userInput : userInputs) {
             dotList.add(Dot.of(userInput));
         }
-        Figure instance = FigureFactoryLambda.getInstance(dotList);
+        Figure instance = FigureFactory.getInstance(dotList);
         String name = instance.getName();
         double area = instance.getArea();
         System.out.println(name + "의 Area 는 : " + area + "이다.");
