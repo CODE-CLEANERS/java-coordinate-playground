@@ -9,6 +9,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.*;
 
+import static coordinate.util.Message.NOT_ENOUGH_INPUT;
+import static coordinate.util.Message.OUT_OF_RANGE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.offset;
 
@@ -38,7 +40,7 @@ public class CalculatorTest {
 
         // when, then
         assertThat(calculator.input()).isEqualTo(false);
-        assertThat(output.toString()).contains("X, Y좌표 모두 최소 0, 최대 24까지만 입력할 수 있습니다.");
+        assertThat(output.toString()).contains(OUT_OF_RANGE.toString());
     }
 
     @ParameterizedTest
@@ -51,7 +53,7 @@ public class CalculatorTest {
 
         // when, then
         assertThat(calculator.input()).isEqualTo(false);
-        assertThat(output.toString()).contains("올바른 개수의 좌표값을 입력해주세요.");
+        assertThat(output.toString()).contains(NOT_ENOUGH_INPUT.toString());
     }
 
     @Test
