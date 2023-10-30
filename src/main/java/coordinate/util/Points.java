@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Points {
-    List<Point> points = new ArrayList<>();
+    private final List<Point> points = new ArrayList<>();
 
     public void add(Point point) {
         points.add(point);
