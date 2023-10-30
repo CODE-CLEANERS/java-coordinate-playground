@@ -1,34 +1,33 @@
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import calculator.Calculator;
+import calculator.CalculatorFactory;
+import domain.Coordinate;
+import view.InputView;
+import view.OutputView;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
+        List<Coordinate> coordinateList = new ArrayList<>();
+        double result = 0;
+        CalculatorFactory calculatorFactory = new CalculatorFactory(coordinateList,result);
 
-        String[] regexArray = {
-                "\\d{3}-\\d{2}-\\d{4}",   // 예: 123-45-6789
-                "\\d{4}-\\d{3}-\\d{3}",   // 예: 1234-567-890
-                "\\w+@\\w+\\.\\w+"       // 예: example@email.com
-        };
-
-        String userInput = "123-45-6789"; // 사용자 입력값
-
-        boolean isValid = false;
-
-        for (String regex : regexArray) {
-            Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher(userInput);
-
-            if (matcher.matches()) {
-                isValid = true;
-                break; // 하나라도 일치하면 루프 종료
+        while (result==0){
+            try {
+                String[] inputArray = inputView.creatCoordinate();
+                Calculator calculator = calculatorFactory.calculateFactory(inputArray);
+                result = calculator.calculator();
+                System.out.println(outputView.resultOutput(calculator,result));
+            }catch (IOException e){
+                System.out.println(e.getMessage());
+                coordinateList.clear();
             }
         }
 
-        if (isValid) {
-            System.out.println("입력값이 올바른 패턴 중 하나와 일치합니다.");
-        } else {
-            System.out.println("올바른 패턴과 일치하지 않습니다.");
-        }
     }
     }
