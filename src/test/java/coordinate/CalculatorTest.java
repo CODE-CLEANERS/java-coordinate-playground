@@ -4,10 +4,13 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.*;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.offset;
 
 public class CalculatorTest {
     private final ByteArrayOutputStream output = new ByteArrayOutputStream();
@@ -24,16 +27,31 @@ public class CalculatorTest {
         output.reset();
     }
 
-    @Test
-    @DisplayName("잘못된_값_입력")
-    void failInput() throws IOException {
+    @ParameterizedTest
+    @DisplayName("범위_밖의_값_입력")
+    @ValueSource(strings = {"(25,11)-(14,15)", "(12,25)-(14,15)", "(12,13)-(25,15)", "(12,13)-(14,25)",
+            "(0,11)-(14,15)", "(12,0)-(14,15)", "(12,13)-(0,15)", "(12,13)-(14,0)"})
+    void inputOutOfRange(String input) throws IOException {
         // given
         Calculator calculator = new Calculator();
-        input("(25,10)-(14,15)");
+        input(input);
 
         // when, then
         assertThat(calculator.input()).isEqualTo(false);
         assertThat(output.toString()).contains("X, Y좌표 모두 최소 0, 최대 24까지만 입력할 수 있습니다.");
+    }
+
+    @ParameterizedTest
+    @DisplayName("허용되지_않는_개수의_축_좌표값_입력")
+    @ValueSource(strings = {"(1,2,3)-(1,2)", "(1,2)-(1,2,3)", "(1)-(1,2)", "()-(1,2)"})
+    void inputNotAllowSize(String input) throws IOException {
+        // given
+        Calculator calculator = new Calculator();
+        input(input);
+
+        // when, then
+        assertThat(calculator.input()).isEqualTo(false);
+        assertThat(output.toString()).contains("올바른 개수의 좌표값을 입력해주세요.");
     }
 
     @Test

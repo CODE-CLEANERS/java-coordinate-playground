@@ -44,20 +44,26 @@ public class Calculator {
     }
 
     public void toPoint(String[] coordinate, Bool result) {
-        int x;
-        int y;
+        if (coordinate.length != 2) {
+            System.out.println("올바른 개수의 좌표값을 입력해주세요.");
+            result.toFalse();
+            return;
+        }
+
+        int x = 0;
+        int y = 0;
 
         try {
             x = Integer.parseInt(coordinate[0]);
             y = Integer.parseInt(coordinate[1]);
         } catch (NumberFormatException e) {
-            x = 0;
-            y = 0;
+            System.out.println("올바른 좌표값을 입력해주세요.");
         }
 
-        if (x < 0 || x > 24 || y < 0 || y > 24) {
+        if (x <= 0 || x > 24 || y <= 0 || y > 24) {
             System.out.println("X, Y좌표 모두 최소 0, 최대 24까지만 입력할 수 있습니다.");
             result.toFalse();
+            return;
         }
 
         Point point = new Point(x, y);
