@@ -55,7 +55,7 @@ public class CalculatorTest {
 
 
         // then
-        assertThat(result).contains(points);
+        assertThat(result).containsExactly(points);
     }
 
     @Test
@@ -66,7 +66,7 @@ public class CalculatorTest {
         points[1] = new Point(14, 15);
 
         // when
-        Shape result = calculator.getShape(points);
+        GeometricElement result = calculator.getShape(points);
 
         // then
         assertThat(result.getClass()).isEqualTo(Line.class);

@@ -11,7 +11,7 @@ class LineTest {
 
     @ParameterizedTest
     @CsvSource(value = {"[10,14]:[14,15]"}, delimiter = ':')
-    void 두_점_저장(String xStr, String yStr) {
+    void 생성(String xStr, String yStr) {
         // given
         Point[] points = getPoints(xStr, yStr);
         Line line = new Line(points[0], points[1]);
@@ -20,11 +20,11 @@ class LineTest {
         Point[] result = line.getEndPoints();
 
         // then
-        assertThat(result).contains(points);
+        assertThat(result).containsExactly(points);
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"[10,14]:[14,15]"}, delimiter = ':')
+    @CsvSource(value = {"[10,14]:[10,15]"}, delimiter = ':')
     void 거리_계산(String xStr, String yStr) {
         // given
         Point[] points = getPoints(xStr, yStr);
