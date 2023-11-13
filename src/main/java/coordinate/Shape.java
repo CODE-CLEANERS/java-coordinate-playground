@@ -1,7 +1,7 @@
 package coordinate;
 
 public interface Shape {
-    boolean validate();
+    void validate();
 
     Point[] getVertex();
 }
