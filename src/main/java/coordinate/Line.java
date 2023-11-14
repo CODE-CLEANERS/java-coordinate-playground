@@ -1,5 +1,7 @@
 package coordinate;
 
+import util.Terminal;
+
 import java.util.Arrays;
 
 public class Line implements GeometricElement {
@@ -21,5 +23,11 @@ public class Line implements GeometricElement {
         int dy = points[0].getY() - points[1].getY();
 
         return Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+    }
+
+    @Override
+    public void printCalculateResult() {
+        String message = String.format("두 점 사이의 거리는 %.6f", this.calculate());
+        Terminal.out(message);
     }
 }

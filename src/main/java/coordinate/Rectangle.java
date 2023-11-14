@@ -1,5 +1,7 @@
 package coordinate;
 
+import util.Terminal;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -95,5 +97,11 @@ public class Rectangle implements GeometricElement, Shape {
         int width = vertexes[0].getX() - vertexes[2].getX();
         int height = vertexes[0].getY() - vertexes[3].getY();
         return width * height;
+    }
+
+    @Override
+    public void printCalculateResult() {
+        String message = String.format("사각형 넓이는 %.0f", this.calculate());
+        Terminal.out(message);
     }
 }

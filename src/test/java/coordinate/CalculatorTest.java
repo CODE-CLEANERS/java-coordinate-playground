@@ -66,7 +66,7 @@ public class CalculatorTest {
         points[1] = new Point(14, 15);
 
         // when
-        GeometricElement result = calculator.getShape(points);
+        GeometricElement result = calculator.getGeometricElement(points);
 
         // then
         assertThat(result.getClass()).isEqualTo(Line.class);

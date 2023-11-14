@@ -1,5 +1,7 @@
 package coordinate;
 
+import util.Terminal;
+
 import java.util.Arrays;
 
 public class Triangle implements GeometricElement, Shape {
@@ -25,6 +27,12 @@ public class Triangle implements GeometricElement, Shape {
         double s = (a + b + c) / 2;
 
         return Math.sqrt(s * (s - a) * (s - b) * (s - c));
+    }
+
+    @Override
+    public void printCalculateResult() {
+        String message = String.format("삼각형 넓이는 %.1f", this.calculate());
+        Terminal.out(message);
     }
 
     @Override
