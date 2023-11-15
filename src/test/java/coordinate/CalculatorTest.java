@@ -1,58 +1,58 @@
 package coordinate;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static coordinate.PointConverter.getPoints;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CalculatorTest {
 
-    private Calculator calculator;
-
-    @BeforeEach
-    void beforeEach() {
-        this.calculator = new Calculator();
-    }
-
     @ParameterizedTest
-    @CsvSource(value = {"[24,10]:[10,24]", "[1,5]:[5,1]"}, delimiter = ':')
-    void 좌표_입력_테스트_범위값(String xStr, String yStr) {
-        // given
-        Point[] points = getPoints(xStr, yStr);
-
+    @ValueSource(strings = {"(25,10)-(10,25)", "(0,13)-(23,0)", "(-1,17)-(8,-1)"})
+    void 좌표_입력_테스트_범위_초과(String input) {
         // when
-        boolean result = calculator.validatePoints(points);
-
         // then
-        assertThat(result).isTrue();
+        IllegalArgumentException result = Assertions.assertThrows(IllegalArgumentException.class, () -> Calculator.toPoints(input));
+
+        assertThat(result.getMessage()).contains("input is from 1 to 24");
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"[25,10]:[10,25]", "[0,23]:[13,0]", "[-1,8]:[17,-1]"}, delimiter = ':')
-    void 좌표_입력_테스트_범위_초과(String xStr, String yStr) {
-        // given
-        Point[] points = getPoints(xStr, yStr);
-
+    @ValueSource(strings = {"(ㄱ,10)-(10,3)", "(4,A)-(23,5)", "(10,17)-(8,$)"})
+    void 좌표_입력_테스트_숫자가_아님(String input) {
         // when
-        boolean result = calculator.validatePoints(points);
-
         // then
-        assertThat(result).isFalse();
+        ArithmeticException result = Assertions.assertThrows(ArithmeticException.class, () -> Calculator.toPoints(input));
+
+        assertThat(result.getMessage()).contains("The input is not a number");
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"(10,10)-(14,15):[10,14]:[10,15]"}, delimiter = ':')
+    @ValueSource(strings = {"(,3)-(5,2)", "(4,1)-(2,)", "(4,1)-( ,5)", "(5, )-(2,3)"})
+    void 좌표_입력_테스트_공백_입력됨(String input) {
+        // when
+        // then
+        ArithmeticException result = Assertions.assertThrows(ArithmeticException.class, () -> Calculator.toPoints(input));
+
+        assertThat(result.getMessage()).contains("The input is not a two dimension point.");
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "(10,10)-(14,15):[10,14]:[10,15]",
+            "(24,10)-(10,24):[24,10]:[10,24]",
+            "(1,5)-(5,1):[1,5]:[5,1]"
+    }, delimiter = ':')
     void 좌표_입력_테스트(String input, String xStr, String yStr) {
         // given
         Point[] points = getPoints(xStr, yStr);
 
-
         // when
-        Point[] result = calculator.toPoints(input);
-
+        Point[] result = Calculator.toPoints(input);
 
         // then
         assertThat(result).containsExactly(points);
@@ -66,7 +66,7 @@ public class CalculatorTest {
         points[1] = new Point(14, 15);
 
         // when
-        GeometricElement result = calculator.getGeometricElement(points);
+        GeometricElement result = Calculator.getGeometricElement(points);
 
         // then
         assertThat(result.getClass()).isEqualTo(Line.class);
