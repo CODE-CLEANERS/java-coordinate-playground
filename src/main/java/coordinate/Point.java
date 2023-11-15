@@ -32,6 +32,6 @@ public class Point {
         }
 
         Point compare = (Point) obj;
-        return compare.getX() == this.x && compare.getY() == this.y;
+        return compare.x == this.x && compare.y == this.y;
     }
 }
