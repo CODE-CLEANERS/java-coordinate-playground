@@ -3,8 +3,6 @@ package coordinate;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.io.IOException;
-
 import static coordinate.PointConverter.getPoints;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.offset;
@@ -19,7 +17,7 @@ public class RectangleTest {
         Point[] points = getPoints(xStr, yStr);
 
         // when
-        Rectangle rectangle = new Rectangle(points[0], points[1], points[2], points[3]);
+        Rectangle rectangle = new Rectangle(points);
         Point[] result = rectangle.getVertex();
 
         // then
@@ -35,7 +33,7 @@ public class RectangleTest {
         // when
         // then
         ArithmeticException result = assertThrows(ArithmeticException.class,
-                () -> new Rectangle(points[0], points[1], points[2], points[3]));
+                () -> new Rectangle(points));
 
         assertThat(result.getMessage()).contains("No Rectangle");
     }
@@ -45,7 +43,7 @@ public class RectangleTest {
     void 넓이_계산(String xStr, String yStr) {
         // given
         Point[] points = getPoints(xStr, yStr);
-        Rectangle rectangle = new Rectangle(points[0], points[1], points[2], points[3]);
+        Rectangle rectangle = new Rectangle(points);
 
         // when
         double result = rectangle.calculate();

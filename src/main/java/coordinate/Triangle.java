@@ -8,12 +8,8 @@ public class Triangle implements GeometricElement, Shape {
 
     private final Point[] vertexes;
 
-    public Triangle(Point point1, Point point2, Point point3) {
-        vertexes = new Point[3];
-
-        vertexes[0] = point1;
-        vertexes[1] = point2;
-        vertexes[2] = point3;
+    public Triangle(Point[] in) {
+        vertexes = Arrays.copyOf(in, 3);
 
         validate();
     }

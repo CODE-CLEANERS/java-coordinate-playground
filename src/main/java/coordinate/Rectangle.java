@@ -4,33 +4,17 @@ import util.Terminal;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Rectangle implements GeometricElement, Shape {
     private final Point[] vertexes;
 
-    public Rectangle(Point point1, Point point2, Point point3, Point point4) {
-        List<Point> points = new ArrayList<>();
-        points.add(point1);
-        points.add(point2);
-        points.add(point3);
-        points.add(point4);
-
+    public Rectangle(Point[] in) {
+        List<Point> points = new ArrayList<>(4);
+        Collections.addAll(points, in);
         this.vertexes = getSortedVertexes(points);
         validate();
-    }
-
-    @Override
-    public void validate() {
-        boolean result1;
-        boolean result2;
-
-        result1 = isRightAngle(new Line(vertexes[0], vertexes[2]), new Line(vertexes[0], vertexes[3]));
-        result2 = isRightAngle(new Line(vertexes[1], vertexes[2]), new Line(vertexes[1], vertexes[3]));
-
-        if (!(result1 && result2)) {
-            throw new ArithmeticException("No Rectangle.");
-        }
     }
 
     /**
@@ -66,6 +50,19 @@ public class Rectangle implements GeometricElement, Shape {
         sortedVertexes[3] = points.get(1);
 
         return sortedVertexes;
+    }
+
+    @Override
+    public void validate() {
+        boolean result1;
+        boolean result2;
+
+        result1 = isRightAngle(new Line(vertexes[0], vertexes[2]), new Line(vertexes[0], vertexes[3]));
+        result2 = isRightAngle(new Line(vertexes[1], vertexes[2]), new Line(vertexes[1], vertexes[3]));
+
+        if (!(result1 && result2)) {
+            throw new ArithmeticException("No Rectangle.");
+        }
     }
 
     private boolean isRightAngle(Line line1, Line line2) {

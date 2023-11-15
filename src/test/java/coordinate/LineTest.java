@@ -14,7 +14,7 @@ class LineTest {
     void 생성(String xStr, String yStr) {
         // given
         Point[] points = getPoints(xStr, yStr);
-        Line line = new Line(points[0], points[1]);
+        Line line = new Line(points);
 
         // when
         Point[] result = line.getEndPoints();
@@ -28,7 +28,7 @@ class LineTest {
     void 거리_계산(String xStr, String yStr) {
         // given
         Point[] points = getPoints(xStr, yStr);
-        Line line = new Line(points[0], points[1]);
+        Line line = new Line(points);
 
         // when
         double result = line.calculate();

@@ -7,10 +7,12 @@ import java.util.Arrays;
 public class Line implements GeometricElement {
     private final Point[] points;
 
+    public Line(Point[] in) {
+        points = Arrays.copyOf(in, 2);
+    }
+
     public Line(Point point1, Point point2) {
-        points = new Point[2];
-        points[0] = point1;
-        points[1] = point2;
+        this(new Point[]{point1, point2});
     }
 
     public Point[] getEndPoints() {

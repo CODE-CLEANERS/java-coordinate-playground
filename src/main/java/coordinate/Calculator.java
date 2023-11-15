@@ -64,15 +64,15 @@ public class Calculator {
 
     public static GeometricElement getGeometricElement(Point[] points) {
         if (points.length == 2) {
-            return new Line(points[0], points[1]);
+            return new Line(points);
         }
 
         if (points.length == 4) {
-            return new Rectangle(points[0], points[1], points[2], points[3]);
+            return new Rectangle(points);
         }
 
         if (points.length == 3) {
-            return new Triangle(points[0], points[1], points[2]);
+            return new Triangle(points);
         }
 
         throw new ArithmeticException("No Line or Shape");

@@ -17,7 +17,7 @@ public class TriangleTest {
         Point[] points = getPoints(xStr, yStr);
 
         // when
-        Triangle triangle = new Triangle(points[0], points[1], points[2]);
+        Triangle triangle = new Triangle(points);
         Point[] result = triangle.getVertex();
 
         // then
@@ -33,7 +33,7 @@ public class TriangleTest {
         // when
         // then
         ArithmeticException result = assertThrows(ArithmeticException.class,
-                () -> new Triangle(points[0], points[1], points[2]));
+                () -> new Triangle(points));
 
         assertThat(result.getMessage()).contains("No Triangle");
     }
@@ -43,7 +43,7 @@ public class TriangleTest {
     void 넓이_계산(String xStr, String yStr) {
         // given
         Point[] points = getPoints(xStr, yStr);
-        Triangle triangle = new Triangle(points[0], points[1], points[2]);
+        Triangle triangle = new Triangle(points);
 
         // when
         double result = triangle.calculate();
