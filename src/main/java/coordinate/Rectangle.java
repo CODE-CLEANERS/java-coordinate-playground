@@ -7,13 +7,13 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Rectangle implements GeometricElement, Shape {
-    private final Point[] vertexes;
+public class Rectangle extends Shape implements GeometricElement {
 
     public Rectangle(Point[] in) {
+        super(in);
         List<Point> points = new ArrayList<>(4);
         Collections.addAll(points, in);
-        this.vertexes = getSortedVertexes(points);
+        getSortedVertexes(points);
         validate();
     }
 
@@ -24,14 +24,10 @@ public class Rectangle implements GeometricElement, Shape {
      * 3. 위의 두 점을 순서 대로 배열에 저장
      * 4. 나머지 두 점을 이어서 배열에 저장 (나머지 두점은 또 서로의 대칭점)
      * @param points 입력 받은 점들
-     * @return 정렬된 점(꼭지점)들
      */
-    private Point[] getSortedVertexes(List<Point> points) {
-        Point[] sortedVertexes = new Point[4];
-
+    private void getSortedVertexes(List<Point> points) {
         Point base = points.get(0);
         points.remove(base);
-        sortedVertexes[0] = base;
 
         Point opposite = points.get(0);
         double maxLength = new Line(base, opposite).calculate();
@@ -45,11 +41,11 @@ public class Rectangle implements GeometricElement, Shape {
         }
 
         points.remove(opposite);
-        sortedVertexes[1] = opposite;
-        sortedVertexes[2] = points.get(0);
-        sortedVertexes[3] = points.get(1);
 
-        return sortedVertexes;
+        vertexes[0] = base;
+        vertexes[1] = opposite;
+        vertexes[2] = points.get(0);
+        vertexes[3] = points.get(1);
     }
 
     @Override

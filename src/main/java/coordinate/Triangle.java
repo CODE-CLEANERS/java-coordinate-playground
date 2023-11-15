@@ -4,13 +4,11 @@ import util.Terminal;
 
 import java.util.Arrays;
 
-public class Triangle implements GeometricElement, Shape {
-
-    private final Point[] vertexes;
+public class Triangle extends Shape implements GeometricElement {
 
     public Triangle(Point[] in) {
-        vertexes = Arrays.copyOf(in, 3);
-
+        super(in);
+        System.arraycopy(in, 0, vertexes, 0, in.length);
         validate();
     }
 

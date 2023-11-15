@@ -1,7 +1,14 @@
 package coordinate;
 
-public interface Shape {
-    void validate();
+public abstract class Shape {
 
-    Point[] getVertex();
+    protected final Point[] vertexes;
+
+    protected Shape(Point[] in) {
+        this.vertexes = new Point[in.length];
+    }
+
+    abstract void validate();
+
+    abstract Point[] getVertex();
 }
