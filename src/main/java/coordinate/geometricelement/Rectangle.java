@@ -1,4 +1,4 @@
-package coordinate;
+package coordinate.geometricelement;
 
 import util.Terminal;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Rectangle extends Shape implements GeometricElement {
 
-    public Rectangle(Point[] in) {
+    protected Rectangle(Point[] in) {
         super(in);
         List<Point> points = new ArrayList<>(4);
         Collections.addAll(points, in);

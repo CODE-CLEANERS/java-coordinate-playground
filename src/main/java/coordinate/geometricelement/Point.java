@@ -1,4 +1,4 @@
-package coordinate;
+package coordinate.geometricelement;
 
 public class Point {
     private final int x;

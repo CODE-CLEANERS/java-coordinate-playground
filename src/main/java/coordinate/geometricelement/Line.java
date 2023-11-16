@@ -1,4 +1,4 @@
-package coordinate;
+package coordinate.geometricelement;
 
 import util.Terminal;
 
@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class Line implements GeometricElement {
     private final Point[] points;
 
-    public Line(Point[] in) {
+    protected Line(Point[] in) {
         points = Arrays.copyOf(in, 2);
     }
 

@@ -1,4 +1,4 @@
-package coordinate;
+package coordinate.geometricelement;
 
 public interface GeometricElement {
     double calculate();

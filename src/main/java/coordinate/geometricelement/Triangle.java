@@ -1,4 +1,4 @@
-package coordinate;
+package coordinate.geometricelement;
 
 import util.Terminal;
 
@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class Triangle extends Shape implements GeometricElement {
 
-    public Triangle(Point[] in) {
+    protected Triangle(Point[] in) {
         super(in);
         System.arraycopy(in, 0, vertexes, 0, in.length);
         validate();

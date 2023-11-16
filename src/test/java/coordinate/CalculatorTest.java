@@ -1,7 +1,7 @@
 package coordinate;
 
+import coordinate.geometricelement.Point;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -56,19 +56,5 @@ public class CalculatorTest {
 
         // then
         assertThat(result).containsExactly(points);
-    }
-
-    @Test
-    void 좌표_두개_입력() {
-        // given
-        Point[] points = new Point[2];
-        points[0] = new Point(10, 10);
-        points[1] = new Point(14, 15);
-
-        // when
-        GeometricElement result = Calculator.getGeometricElement(points);
-
-        // then
-        assertThat(result.getClass()).isEqualTo(Line.class);
     }
 }

@@ -1,6 +1,7 @@
 import coordinate.Calculator;
-import coordinate.GeometricElement;
-import coordinate.Point;
+import coordinate.geometricelement.GeometricElement;
+import coordinate.geometricelement.GeometricFactory;
+import coordinate.geometricelement.Point;
 import util.Plate;
 import util.Terminal;
 
@@ -13,7 +14,7 @@ public class Main {
         Plate plate = new Plate();
         plate.drawPoints(points);
         plate.print();
-        GeometricElement geometricElement = Calculator.getGeometricElement(points);
+        GeometricElement geometricElement = GeometricFactory.getGeometricElement(points);
         geometricElement.printCalculateResult();
     }
 }

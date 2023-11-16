@@ -1,5 +1,7 @@
 package coordinate;
 
+import coordinate.geometricelement.Point;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -54,27 +56,14 @@ public class Calculator {
             }
         }
 
+        int rangeMin = 1;
+        int rangeMax = 24;
+
         int num = Integer.parseInt(in);
-        if (num < 1 || num > 24) {
+        if (num < rangeMin || num > rangeMax) {
             throw new IllegalArgumentException("allow range for input is from 1 to 24.");
         }
 
         return num;
-    }
-
-    public static GeometricElement getGeometricElement(Point[] points) {
-        if (points.length == 2) {
-            return new Line(points);
-        }
-
-        if (points.length == 4) {
-            return new Rectangle(points);
-        }
-
-        if (points.length == 3) {
-            return new Triangle(points);
-        }
-
-        throw new ArithmeticException("No Line or Shape");
     }
 }
