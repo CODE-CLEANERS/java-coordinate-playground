@@ -1,13 +1,11 @@
 package coordinate;
 
-import coordinate.geometricelement.Point;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static exception.ExceptionMessage.*;
 
-public class Calculator {
+public class PointMaker {
 
     public static Point[] toPoints(String input) {
         if (isBlank(input)) {

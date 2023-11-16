@@ -1,6 +1,6 @@
 package util;
 
-import coordinate.geometricelement.Point;
+import coordinate.Point;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package coordinate.geometricelement;
+package coordinate;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

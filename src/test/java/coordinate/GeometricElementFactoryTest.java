@@ -1,4 +1,4 @@
-package coordinate.geometricelement;
+package coordinate;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package coordinate.geometricelement;
+package coordinate;
 
 public abstract class Shape {
 

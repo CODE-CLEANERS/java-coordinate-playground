@@ -1,6 +1,5 @@
 package coordinate;
 
-import coordinate.geometricelement.Point;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -9,14 +8,14 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static coordinate.PointConverter.getPoints;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CalculatorTest {
+public class PointMakerTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"(25,10)-(10,25)", "(0,13)-(23,0)", "(-1,17)-(8,-1)"})
     void 좌표_입력_테스트_범위_초과(String input) {
         // when
         // then
-        IllegalArgumentException result = Assertions.assertThrows(IllegalArgumentException.class, () -> Calculator.toPoints(input));
+        IllegalArgumentException result = Assertions.assertThrows(IllegalArgumentException.class, () -> PointMaker.toPoints(input));
 
         assertThat(result.getMessage()).contains("input is from 1 to 24");
     }
@@ -26,7 +25,7 @@ public class CalculatorTest {
     void 좌표_입력_테스트_숫자가_아님(String input) {
         // when
         // then
-        ArithmeticException result = Assertions.assertThrows(ArithmeticException.class, () -> Calculator.toPoints(input));
+        ArithmeticException result = Assertions.assertThrows(ArithmeticException.class, () -> PointMaker.toPoints(input));
 
         assertThat(result.getMessage()).contains("The input is not a number");
     }
@@ -36,7 +35,7 @@ public class CalculatorTest {
     void 좌표_입력_테스트_공백_입력됨(String input) {
         // when
         // then
-        ArithmeticException result = Assertions.assertThrows(ArithmeticException.class, () -> Calculator.toPoints(input));
+        ArithmeticException result = Assertions.assertThrows(ArithmeticException.class, () -> PointMaker.toPoints(input));
 
         assertThat(result.getMessage()).contains("The input is not a two dimension point.");
     }
@@ -52,7 +51,7 @@ public class CalculatorTest {
         Point[] points = getPoints(xStr, yStr);
 
         // when
-        Point[] result = Calculator.toPoints(input);
+        Point[] result = PointMaker.toPoints(input);
 
         // then
         assertThat(result).containsExactly(points);

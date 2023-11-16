@@ -1,7 +1,5 @@
 package coordinate;
 
-import coordinate.geometricelement.Point;
-
 import java.util.Arrays;
 
 public class PointConverter {

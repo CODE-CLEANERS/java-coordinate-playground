@@ -1,4 +1,4 @@
-package coordinate.geometricelement;
+package coordinate;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
