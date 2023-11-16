@@ -4,6 +4,8 @@ import util.Terminal;
 
 import java.util.Arrays;
 
+import static exception.ExceptionMessage.NO_SHAPE;
+
 public class Triangle extends Shape implements GeometricElement {
 
     protected Triangle(Point[] in) {
@@ -42,7 +44,7 @@ public class Triangle extends Shape implements GeometricElement {
         double slope2 = Math.abs((double) dy / dx);
 
         if (slope1 == slope2) {
-            throw new ArithmeticException("No Triangle.");
+            throw new ArithmeticException(String.format(NO_SHAPE.getMessage(), this.getClass().getSimpleName()));
         }
     }
 

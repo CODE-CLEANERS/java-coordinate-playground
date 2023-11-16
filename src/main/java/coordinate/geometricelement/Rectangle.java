@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static exception.ExceptionMessage.NO_SHAPE;
+
 public class Rectangle extends Shape implements GeometricElement {
 
     protected Rectangle(Point[] in) {
@@ -57,7 +59,7 @@ public class Rectangle extends Shape implements GeometricElement {
         result2 = isRightAngle(new Line(vertexes[1], vertexes[2]), new Line(vertexes[1], vertexes[3]));
 
         if (!(result1 && result2)) {
-            throw new ArithmeticException("No Rectangle.");
+            throw new ArithmeticException(String.format(NO_SHAPE.getMessage(), this.getClass().getSimpleName()));
         }
     }
 

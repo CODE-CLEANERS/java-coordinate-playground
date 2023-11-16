@@ -5,11 +5,13 @@ import coordinate.geometricelement.Point;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static exception.ExceptionMessage.*;
+
 public class Calculator {
 
     public static Point[] toPoints(String input) {
         if (isBlank(input)) {
-            throw new IllegalArgumentException("No Input.");
+            throw new IllegalArgumentException(NO_INPUT.getMessage());
         }
 
         Pattern pattern = Pattern.compile("\\(([^)]+)\\)");
@@ -27,7 +29,7 @@ public class Calculator {
                     .split(",");
 
             if (coordinate.length != 2 || isBlank(coordinate[0]) || isBlank(coordinate[1])) {
-                throw new ArithmeticException("The input is not a two dimension point.");
+                throw new ArithmeticException(NO_TWO_DIMENSION_POINT.getMessage());
             }
 
             int x = validationNumberAndGet(coordinate[0]);
@@ -46,13 +48,13 @@ public class Calculator {
         in = in.trim();
         // "-" 부호만 입력 했을 때는 0으로 간주됨
         if (in.charAt(0) != '-' && !Character.isDigit(in.charAt(0))) {
-            throw new ArithmeticException("The input is not a number.");
+            throw new ArithmeticException(INPUT_NOT_NUMBER.getMessage());
         }
 
         for (int i = 1; i < in.length(); i++) {
             boolean isDigit = Character.isDigit(in.charAt(i));
             if (!isDigit) {
-                throw new ArithmeticException("The input is not a number.");
+                throw new ArithmeticException(INPUT_NOT_NUMBER.getMessage());
             }
         }
 
@@ -61,7 +63,7 @@ public class Calculator {
 
         int num = Integer.parseInt(in);
         if (num < rangeMin || num > rangeMax) {
-            throw new IllegalArgumentException("allow range for input is from 1 to 24.");
+            throw new IllegalArgumentException(String.format(INPUT_OUT_OF_RANGE.getMessage(), rangeMin, rangeMax));
         }
 
         return num;

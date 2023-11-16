@@ -4,6 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static exception.ExceptionMessage.NO_LINE_OR_SHAPE;
+
 public class GeometricFactory {
 
     private final static Map<Integer, Class<? extends GeometricElement>> GEOMETRIC_ELEMENTS = new HashMap<>();
@@ -20,7 +22,7 @@ public class GeometricFactory {
 
     public static GeometricElement getGeometricElement(Point[] points) {
         if (!GEOMETRIC_ELEMENTS.containsKey(points.length)) {
-            throw new ArithmeticException("No Line or Shape");
+            throw new ArithmeticException(NO_LINE_OR_SHAPE.getMessage());
         }
 
         try {
